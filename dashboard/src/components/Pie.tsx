@@ -12,9 +12,9 @@ export default function Pie({ fuente }: { fuente: string }) {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M3 21h18M6 17v-6M11 17V5M16 17v-9M21 17v-3" />
         </svg>
-        Analíticas de juego de fútbol americano
+        TouchWay
       </div>
-      <span className="text-xs text-[#b6c2d6]">© 2026 Wave Touch · {fuente}</span>
+      <span className="text-xs text-[#b6c2d6]">© 2026 Wave Touch · Datos: {fuente} · Fotos: ESPN / NFL.com vía nflverse</span>
     </footer>
   )
 }

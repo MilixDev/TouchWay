@@ -39,7 +39,8 @@
   .btn-lift:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15, 23, 42, .16); }
   .btn-lift:active { transform: translateY(0) scale(.95); box-shadow: none; }
 
-  .pl { cursor: pointer; transition: opacity .3s ease; }
+  .pl { cursor: pointer; transition: opacity .3s ease; outline: none; }
+  .pl:focus { outline: none; }
   .pl:hover { filter: drop-shadow(0 0 6px rgba(255, 255, 255, .95)); }
   .pl:focus-visible { outline: none; filter: drop-shadow(0 0 4px #facc15) drop-shadow(0 0 4px #facc15); }
 
@@ -47,7 +48,15 @@
   .f2 { opacity: 0; animation: frB .5s steps(1, end) infinite; }
   .bob { animation: bob .45s ease-in-out infinite alternate; transform-box: fill-box; }
   .ring { animation: ringPulse 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .radar-pulso { animation: radarPulso .9s ease-in-out infinite; }
   .card-in { animation: cardIn .4s cubic-bezier(.2, .8, .2, 1); }
+  .mini-in { animation: miniIn .35s cubic-bezier(.2, .8, .2, 1); }
+  /* Foco del tutorial: todo lo demás se oscurece con una sombra enorme */
+  .tour-foco {
+    box-shadow: 0 0 0 4px #facc15, 0 0 0 9999px rgba(2, 6, 23, 0.68);
+    transition: top .25s ease, left .25s ease, width .25s ease, height .25s ease;
+    animation: tourPulso 1.6s ease-in-out infinite;
+  }
   .slide-l { animation: slideL .35s cubic-bezier(.2, .8, .2, 1); }
   .slide-r { animation: slideR .35s cubic-bezier(.2, .8, .2, 1); }
 }
@@ -56,6 +65,12 @@
 @keyframes frB { 0% { opacity: 0 } 50% { opacity: 1 } 100% { opacity: 1 } }
 @keyframes bob { from { transform: translateY(0) } to { transform: translateY(-4px) } }
 @keyframes ringPulse { 0%, 100% { transform: scale(1); opacity: .95 } 50% { transform: scale(1.2); opacity: .55 } }
+@keyframes radarPulso { 0%, 100% { stroke-width: 5px; stroke-opacity: 1 } 50% { stroke-width: 10px; stroke-opacity: .7 } }
+@keyframes miniIn { from { opacity: 0; transform: translate(-50%, -24px) } to { opacity: 1; transform: translate(-50%, 0) } }
+@keyframes tourPulso {
+  0%, 100% { box-shadow: 0 0 0 4px #facc15, 0 0 0 9999px rgba(2, 6, 23, 0.68); }
+  50% { box-shadow: 0 0 0 8px rgba(250, 204, 21, .55), 0 0 0 9999px rgba(2, 6, 23, 0.68); }
+}
 @keyframes cardIn { from { opacity: 0; transform: translateY(14px) scale(.98) } to { opacity: 1; transform: none } }
 @keyframes slideL { from { opacity: 0; transform: translateX(-28px) } to { opacity: 1; transform: none } }
 @keyframes slideR { from { opacity: 0; transform: translateX(28px) } to { opacity: 1; transform: none } }
