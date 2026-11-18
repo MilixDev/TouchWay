@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fuentes de Google Fonts guardadas en el proyecto (SIL Open Font License 1.1). */
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url('./assets/fonts/barlow-condensed-700-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('./assets/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('./assets/fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@layer base {
+  body { @apply bg-white font-sans text-slate-900; margin: 0; }
+  a { color: #1d4ed8; }
+  a:hover { color: #1e3a8a; }
+  button { transition: transform .18s ease, box-shadow .2s ease, background-color .25s ease, color .25s ease; }
+  button:focus-visible { outline: 3px solid #facc15; outline-offset: 2px; }
+}
+
+@layer components {
+  .btn-lift:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15, 23, 42, .16); }
+  .btn-lift:active { transform: translateY(0) scale(.95); box-shadow: none; }
+
+  .pl { cursor: pointer; transition: opacity .3s ease; }
+  .pl:hover { filter: drop-shadow(0 0 6px rgba(255, 255, 255, .95)); }
+  .pl:focus-visible { outline: none; filter: drop-shadow(0 0 4px #facc15) drop-shadow(0 0 4px #facc15); }
+
+  .f1 { animation: frA .5s steps(1, end) infinite; }
+  .f2 { opacity: 0; animation: frB .5s steps(1, end) infinite; }
+  .bob { animation: bob .45s ease-in-out infinite alternate; transform-box: fill-box; }
+  .ring { animation: ringPulse 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .card-in { animation: cardIn .4s cubic-bezier(.2, .8, .2, 1); }
+  .slide-l { animation: slideL .35s cubic-bezier(.2, .8, .2, 1); }
+  .slide-r { animation: slideR .35s cubic-bezier(.2, .8, .2, 1); }
+}
+
+@keyframes frA { 0% { opacity: 1 } 50% { opacity: 0 } 100% { opacity: 0 } }
+@keyframes frB { 0% { opacity: 0 } 50% { opacity: 1 } 100% { opacity: 1 } }
+@keyframes bob { from { transform: translateY(0) } to { transform: translateY(-4px) } }
+@keyframes ringPulse { 0%, 100% { transform: scale(1); opacity: .95 } 50% { transform: scale(1.2); opacity: .55 } }
+@keyframes cardIn { from { opacity: 0; transform: translateY(14px) scale(.98) } to { opacity: 1; transform: none } }
+@keyframes slideL { from { opacity: 0; transform: translateX(-28px) } to { opacity: 1; transform: none } }
+@keyframes slideR { from { opacity: 0; transform: translateX(28px) } to { opacity: 1; transform: none } }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
